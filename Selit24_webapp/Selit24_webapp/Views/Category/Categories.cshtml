@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Selit24_webapp.Models.CategoryModel>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    ViewData["Title"] = "Categories";
+}
+
+<h1>Categories</h1>
+
+<p>
+    <a asp-action="CreateCategory">Create New</a>
+</p>
+<table class="table table-hover shadow p-3 mb-5 bg-white rounded">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Categoryid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Categoryname)
+            </th>
+            <th>
+                Images
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Categoryid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Categoryname)
+            </td>
+            <td>
+                <img src="data:image/png;base64,@item.CategoryImageBase64" hieght="50" width="50" alt="Profile Image" />
+            </td>
+            <td>
+                    <input type="button" value="Edit" class="btn btn-warning" onclick="location.href='@Url.Action("UpdateCategory", new { id = item.Categoryid })'" />
+                    <input type="button" value="Delete" class="btn btn-danger" onclick="location.href='@Url.Action("DeleteCategory", new { id = item.Categoryid })'" />
+
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

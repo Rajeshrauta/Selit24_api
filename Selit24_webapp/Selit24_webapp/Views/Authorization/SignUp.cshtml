@@ -1,0 +1,55 @@
+﻿@model Selit24_webapp.Models.Login
+
+@{
+    Layout = "~/Views/Shared/_Authorization.cshtml";
+}
+
+<div class="container d-flex justify-content-center align-items-center min-vh-100">
+    <!----------------------- Signup Container -------------------------->
+    <div class="row border rounded-5 p-3 bg-white shadow box-area">
+        <!--------------------------- Left Box ----------------------------->
+        <div class="col-md-6 rounded-4 d-flex justify-content-center align-items-center flex-column left-box" style="background: #103cbe;">
+            <div class="featured-image mb-3">
+                <img src="~/images/1.png" class="img-fluid" style="width: 250px;">
+            </div>
+            <p class="text-white fs-2" style="font-family: 'Courier New', Courier, monospace; font-weight: 600;">Join Us</p>
+            <small class="text-white text-wrap text-center" style="width: 17rem;font-family: 'Courier New', Courier, monospace;">"Create Your Account, Join the Thrift Revolution!</small>
+        </div>
+        <!-------------------- ------ Right Box ---------------------------->
+
+        <div class="col-md-6 right-box">
+            <div class="row align-items-center">
+                <div class="header-text mb-3">
+                    <h2>Welcome to Selit24</h2>
+                    <p>Sign up to get started.</p>
+                </div>
+                <form asp-action="SignUp">
+                <div class="input-group mb-2">
+                    <input type="text" asp-for="Email" class="form-control form-control-lg bg-light fs-6" placeholder="Email address"> 
+                </div>
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                <div class="input-group mb-2">
+                    <input type="password" class="form-control form-control-lg bg-light fs-6" placeholder="Password">
+                </div>
+                    <span asp-validation-for="Password" class="text-danger mb-3"></span>
+                <div class="input-group mb-2">
+                    <input type="password" asp-for="Password" class="form-control form-control-lg bg-light fs-6" placeholder="Confirm Password">
+                </div>
+                    <span asp-validation-for="Password" class="text-danger mb-3"></span>
+                <div class="input-group mb-3">
+                    <button type="submit" class="btn btn-lg btn-primary w-100 fs-6">Sign Up</button>
+                </div>
+                </form>
+                <div class="row">
+                    <small>Already have an account? <a href="@Url.Action("Login")">Login</a></small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

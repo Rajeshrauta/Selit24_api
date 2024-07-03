@@ -1,0 +1,50 @@
+﻿@model Selit24_webapp.Models.CategoryModel
+
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    ViewData["Title"] = "UpdateCategory";
+}
+
+<h1>UpdateCategory</h1>
+
+<h4>CategoryModel</h4>
+<hr />
+<div class="row">
+        <form asp-action="UpdateCategory" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group row">
+            <label asp-for="Categoryid" class=" col-sm-2 col-form-label">Category Id</label>
+                <input asp-for="Categoryid" class="form-control" readonly />
+            </div>
+        <div class="form-group row">
+            <label asp-for="Categoryimage" class="col-sm-2 control-label">Image</label>
+            <div class="col-sm-3">
+                <img src="data:image/png;base64,@Model.CategoryImageBase64" hieght="50" width="50" alt="Profile Image" />
+                <input asp-for="Categoryimage" class="form-control" />
+            </div>
+            <span asp-validation-for="Categoryimage" class="text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <label asp-for="Categoryname" class=" col-sm-2 col-form-label"></label>
+                <input asp-for="Categoryname" class="form-control" />
+            </div>
+        <span asp-validation-for="Categoryname" class="text-danger"></span>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

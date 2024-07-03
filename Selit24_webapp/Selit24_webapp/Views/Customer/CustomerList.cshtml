@@ -1,0 +1,68 @@
+﻿@model IEnumerable<Selit24_webapp.Models.CustomerInfoModel>
+
+@{
+    Layout = "~/Views/Shared/_CustomerLayout.cshtml";
+}
+
+@{
+    ViewData["Title"] = "CustomerList";
+}
+
+<h1>CustomerList</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table table-hover shadow p-3 mb-5 bg-white rounded">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Customerid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Profileimage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Firstname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Lastname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Phonenumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Customeremail)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Customerid)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Profileimage)
+                </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Firstname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Lastname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Phonenumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Customeremail)
+            </td>
+            <td>
+                    <input type="button" value="Details" class="btn btn-info" onclick="location.href='@Url.Action("UserDetails", new { id = item.Customerid })'" />
+                    <input type="button" value="Delete" class="btn btn-danger" onclick="location.href='@Url.Action("DeleteUser", new { id = item.Customerid })'" />
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

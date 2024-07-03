@@ -1,0 +1,45 @@
+﻿@model Selit24_webapp.Models.CategoryModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    ViewData["Title"] = "CreateCategory";
+}
+
+<h1>CreateCategory</h1>
+
+<h4>CategoryModel</h4>
+<hr />
+<div class="row">
+        <form asp-action="CreateCategory" enctype="multipart/form-data">
+
+        <div class="form-group row">
+            <label asp-for="Categoryname" class=" col-sm-2 col-form-label">Category Name</label>
+            <div class="col-sm-3">
+                <input asp-for="Categoryname" class="form-control" />
+            </div>
+            <span asp-validation-for="Categoryname" class="text-danger"></span>
+        </div>
+
+            <div class="form-group row">
+                <label asp-for="Categoryimage" class="col-sm-2 control-label">Picture</label>
+                <div class="col-sm-3">
+                    <input asp-for="Categoryimage" class="form-control" />
+                </div>
+            <span asp-validation-for="Categoryimage" class="text-danger"></span>
+            </div>
+           
+            <div class="form-group">
+            <input type="submit" value="Create" class="btn btn-success mb-2 mt-5" />
+            <input type="button" value="Back to List" class="btn btn-primary mb-2 mt-5" onclick="location.href='@Url.Action("Categories")'" />
+            </div>
+        </form>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

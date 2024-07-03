@@ -1,0 +1,100 @@
+﻿@model Selit24_webapp.Models.UserInfoModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    ViewData["Title"] = "CreateUser";
+}
+
+<h1>CreateUser</h1>
+
+<h4>UserInfoViewModel</h4>
+<hr />
+<div class="row">
+        <form asp-action="CreateUser" method="post" enctype="multipart/form-data">
+            <div class="form-group row">
+                <label asp-for="Firstname" class="col-sm-2 col-form-label"></label>
+                <div class="col-sm-3">
+                    <input asp-for="Firstname" class="form-control" />
+                <span asp-validation-for="Firstname" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label asp-for="Lastname" class="col-sm-2 col-form-label"></label>
+                <div class="col-sm-3">
+                    <input asp-for="Lastname" class="form-control" />
+                <span asp-validation-for="Lastname" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label asp-for="Locationcountry" class="col-sm-2 col-form-label"></label>
+                <div class="col-sm-3">
+                    <input asp-for="Locationcountry" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group row">
+                <label asp-for="Locationstate" class="col-sm-2 col-form-label"></label>
+                <div class="col-sm-3">
+                    <input asp-for="Locationstate" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group row">
+                <label asp-for="Locationdistrict" class="col-sm-2 col-form-label"></label>
+                <div class="col-sm-3">
+                    <input asp-for="Locationdistrict" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group row">
+                <label asp-for="Locationlocality" class="col-sm-2 col-form-label"></label>
+                <div class="col-sm-3">
+                    <input asp-for="Locationlocality" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group row">
+                <label asp-for="Locationpincode" class="col-sm-2 col-form-label"></label>
+                <div class="col-sm-3">
+                    <input asp-for="Locationpincode" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group row">
+            <label asp-for="Profileimage" class="col-sm-2 control-label"></label>
+            <div class="col-sm-3">
+                <input type="file" asp-for="Profileimage" class="form-control" />
+                <span asp-validation-for="Profileimage" class="text-danger"></span>
+                </div>
+            </div>
+        <div class="form-group row">
+            <label asp-for="Useremail" class="col-sm-2 col-form-label"></label>
+            <div class="col-sm-3">
+                <input asp-for="Useremail" class="form-control" />
+                <span asp-validation-for="Useremail" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="password" class="col-sm-2 col-form-label">Password </label>
+            <div class="col-sm-3">
+                <input type="password" class="form-control" id="password" />
+                <span asp-validation-for="Userpassword" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label asp-for="Userpassword" class="col-sm-2 col-form-label">Confirm Password</label>
+            <div class="col-sm-3">
+                <input type="password" asp-for="Userpassword" class="form-control" />
+                <span asp-validation-for="Userpassword" class="text-danger"></span>
+            </div>
+        </div>
+            <div class="form-group">
+            <input type="submit" value="Create" class="btn btn-success mb-2" />
+            <input type="button" value="Back to List" class="btn btn-primary mb-2" onclick="location.href='@Url.Action("Users")'" />
+            </div>
+        </form>
+</div>
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
